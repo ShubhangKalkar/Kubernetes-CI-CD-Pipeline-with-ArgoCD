@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 22,
+  "agentName": "SHUBHANG",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus14.actions.githubusercontent.com/l3MAABxee92x1A8yJZaYwB1bfgLe2ViMcktDTdlP4jllRz1Y8j/",
+  "gitHubUrl": "https://github.com/ShubhangKalkar/Kubernetes-CI-CD-Pipeline-with-ArgoCD",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}
