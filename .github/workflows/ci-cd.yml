@@ -1,9 +1,14 @@
 name: CI/CD Pipeline
+
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+    
+env:
+  IMAGE_NAME: ghcr.io/shubhangkalkar/kubernetes-ci-cd-pipeline-with-argocd
+
 jobs:
   build-and-push:
     runs-on: self-hosted
@@ -24,8 +29,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ${{ env.IMAGE_NAME }}:latest
+            ${{ env.IMAGE_NAME }}:${{ github.sha }}
       - name: Update GitOps repository
         shell: bash
         env:
@@ -45,7 +50,8 @@ jobs:
           if [[ "$OSTYPE" == "darwin"* ]]; then
             sed -i '' "s|image: ghcr.io/${{ github.repository }}:.*|image: ghcr.io/${{ github.repository }}:${{ github.sha }}|g" deployment.yaml
           else
-            sed -i "s|image: ghcr.io/${{ github.repository }}:.*|image: ghcr.io/${{ github.repository }}:${{ github.sha }}|g" deployment.yaml
+            sed -i "s|image: ${{ env.IMAGE_NAME }}:.*|image: ${{ env.IMAGE_NAME }}:${{ github.sha }}|g" deployment.yaml
+
           fi
           
           # Commit changes
@@ -55,4 +61,4 @@ jobs:
           git commit -m "Update image to ${{ github.sha }}"
           
           # Push
-          git push -f https://${GIT_TOKEN}@github.com/ShubhangKalkar/grade-api-gitops.git main
+          git push https://${GIT_TOKEN}@github.com/ShubhangKalkar/grade-api-gitops.git main
