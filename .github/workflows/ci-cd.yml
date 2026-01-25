@@ -35,7 +35,7 @@ jobs:
             ${{ env.IMAGE_NAME }}:latest
             ${{ env.IMAGE_NAME }}:${{ github.sha }}
       - name: Update GitOps repository
-        shell: pwsh
+        shell: powershell
         env:
           GIT_TOKEN: ${{ secrets.GITOPS_PAT }}
           IMAGE_NAME: ${{ env.IMAGE_NAME }}
