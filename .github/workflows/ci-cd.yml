@@ -61,4 +61,4 @@ jobs:
           git push https://$env:GIT_TOKEN@github.com/ShubhangKalkar/grade-api-gitops.git main
 
 
-#ci-cd
+#ci
