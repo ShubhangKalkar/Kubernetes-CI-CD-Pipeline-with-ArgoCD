@@ -59,3 +59,6 @@ jobs:
           git commit -m "Update image to $env:SHA" 2>$null; if ($LASTEXITCODE -ne 0) { "No changes to commit" }
 
           git push https://$env:GIT_TOKEN@github.com/ShubhangKalkar/grade-api-gitops.git main
+
+
+#ci-cd
